@@ -32,4 +32,9 @@ class RestBase {
     return $this->client->get($this->resourcePath . '/' . $path, $params);
   }
 
+  public function put($id, $data)
+  {
+    return $this->client->put($this->resourcePath . '/' . $id, $data);
+  }
+
 }

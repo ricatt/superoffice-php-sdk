@@ -60,6 +60,11 @@ class Client {
     return $this->apiCall('POST', $this->url . '/' . $path, $data);
   }
 
+  public function put($path, $data)
+  {
+    return $this->apiCall('PUT', $this->url . '/' . $path, $data);
+  }
+
   protected function apiCall($method, $path, $data = null)
   {
     $opts = [
