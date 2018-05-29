@@ -5,6 +5,7 @@ namespace nymedia\SuperOffice;
 use nymedia\SuperOffice\resources\Contact;
 use nymedia\SuperOffice\resources\Person;
 use nymedia\SuperOffice\resources\Project;
+use nymedia\SuperOffice\resources\ProjectMember;
 
 class Client {
 
@@ -33,6 +34,11 @@ class Client {
     $this->client = $client;
     $this->user = $user;
     $this->password = $password;
+  }
+
+  public function projectMember()
+  {
+    return new ProjectMember($this);
   }
 
   public function person()
