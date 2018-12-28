@@ -20,59 +20,50 @@ class Client {
 
   protected $user;
 
-  public function getClient()
-  {
-    if (!$this->client) {
-      $this->client = new \GuzzleHttp\Client();
-    }
-    return $this->client;
-  }
-
-  public function __construct($url, $user, $password, $client = null)
-  {
+  public function __construct($url, $user, $password, $client = null) {
     $this->url = $url;
     $this->client = $client;
     $this->user = $user;
     $this->password = $password;
   }
 
-  public function projectMember()
-  {
+  public function getClient() {
+    if (!$this->client) {
+      $this->client = new \GuzzleHttp\Client();
+    }
+    return $this->client;
+  }
+
+
+  public function projectMember() {
     return new ProjectMember($this);
   }
 
-  public function person()
-  {
+  public function person() {
     return new Person($this);
   }
 
-  public function contact()
-  {
+  public function contact() {
     return new Contact($this);
   }
 
-  public function project()
-  {
+  public function project() {
     return new Project($this);
   }
 
-  public function get($path, $data = null)
-  {
+  public function get($path, $data = null) {
     return $this->apiCall('GET', $this->url . '/' . $path, $data);
   }
 
-  public function post($path, $data)
-  {
+  public function post($path, $data) {
     return $this->apiCall('POST', $this->url . '/' . $path, $data);
   }
 
-  public function put($path, $data)
-  {
+  public function put($path, $data) {
     return $this->apiCall('PUT', $this->url . '/' . $path, $data);
   }
 
-  protected function apiCall($method, $path, $data = null)
-  {
+  protected function apiCall($method, $path, $data = null) {
     $opts = [
       'headers' => [
         'User-Agent' => 'Superoffice PHP SDK (https://github.com/nymedia/superoffice-php-sdk)',
